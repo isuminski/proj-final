@@ -51,14 +51,18 @@ def add_to_parameters(Temp, Press):
 
 def make_request_with_cache(base_url, params):
     global CACHE_DICT
-    key = json.dumps(params)
-    if key in CACHE_DICT:
+    unique_name = json.dumps(params)
+    if unique_name in CACHE_DICT:
         print('Using cache...')
-        response = CACHE_DICT[key]
+        response = CACHE_DICT[unique_name]
     else:
         print('Making request...')
-        response = requests.get(base_url, params).text
-        CACHE_DICT[key] = response
+        full_url = BASE_URL + '?'
+        for key in params:
+            full_url += key + '=' + str(params[key]) + '&'
+        full_url = full_url[:-1]
+        response = requests.get(full_url).text
+        CACHE_DICT[unique_name] = response
         save_cache(CACHE_DICT)
     return response
     

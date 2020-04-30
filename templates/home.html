@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <style>
+   	.paragraph {
+   		text-indent : 3ch;
+        padding-bottom : 8px;
+    	}
+	.subheading {
+   		font-weight : bold;
+    	}
+    table {
+    padding-left : 60px;
+    padding-top : 10px;
+    }
+    button {
+	display: block;
+	width: 200px;
+	height: 40px;
+	background-color : lightgrey;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	text-align: center;
+}
+  </style>
+</head>
+<body>
+    <div class="title-block">
+        <h1>Welcome to the...</h1>
+        <h3>Thermodynamics Water State/Rankine Cycle Calculator!<br>
+        Using the NIST Thermophysical Webbooks.</h3>
+    </div>
+    
+    <p>
+    <div class="subheading"> About: </div>
+    <div class="paragraph">
+    This tool was created as a final project for SI 507 - "Intermediate Programming<br>
+    using Python" in the Winter 2020 Term at the University of Michigan.  It requires <br>
+    Python3, as well as the Flask, sqlite3, and Beautiful Soup packages to run. The program <br>
+    is designed to streamline the process of searching the NIST Thermophysical online <br>
+    webbooks (an online tabulation of thermodynamic properties) to help solve problems <br>
+    as might be found in an undergraduate engineering thermodynamics course. <br></div>
+    
+    <div class="paragraph">
+    For a more in-depth, technical document outlining the various functions of this <br>
+    program, please see the <a href="/instructions/">instructions</a> page.  To gain some understanding of the layout <br>
+    and functionality of the database this tool is designed to search, you may visit the <br>
+    <a href="https://webbook.nist.gov/chemistry/fluid/"> NIST Thermophysical WebBook Homepage</a>.  Or, to get started, select an option below: </div></p>
+    
+    
+ <table>
+ <tr>
+ 	<td>
+    <form method='post' action='/state-calculator/'>
+        <button type='submit'>State Calculator</button>
+    </form>
+    </td>
+    <td>
+    <form method='post' action='/cycle-calculator/'>
+        <button type='submit'>Cycle Calculator</button>
+    </form>
+    </td>
+    
+    
+</body>
+</html>

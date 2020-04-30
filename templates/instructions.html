@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>readme - NIST App</title>
+  <style>
+  	td, th {
+    	border : 1px solid black;
+        }
+    sub {
+        font-style : italic;
+        }
+  	span {
+    	color : red;
+        font-weight : normal;
+        }
+ 	.search-table {
+  		border : 1px solid black;
+        }
+    .thstyle {
+    	background-color : gainsboro;
+        }
+   	.paragraph {
+   		text-indent : 3ch;
+        padding-bottom : 8px;
+    	}
+	.subheading {
+   		font-weight : bold;
+    	}
+    .button-table {
+    padding-left : 60px;
+    padding-top : 10px;
+    border : none;
+    }
+    button {
+	display: block;
+	width: 200px;
+	height: 40px;
+	background-color : lightgrey;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	text-align: center;
+}
+  </style>
+</head>
+<body>
+    <div class="title-block">
+        <h2>Instructions:</h2>
+    </div>
+    
+    <p>
+    <div class="subheading"> State Calculator: </div>
+    <div class="paragraph">
+    Any thermodynamic state is defined by a unique set of state variables.  In <br>
+    the case of water, two variables are needed to define the state, and the rest can <br>
+    be looked up, calculated, or interpolated from a series of tables. This tool is <br>
+    designed to make that process easier.  On the 'State Calculator' page, a series of <br>
+    text inputs corresponding to state variables are available.  On this calculator <br>
+    any of the enabled inputs can be used to search for a thermodynamic state. <br>
+    Details for each search combination are found below:
+    </div>
+    <br>
+    <table class="search-table">
+    <tr class="thstyle">
+    	<th> Valid </th>
+    	<th> Description </th>
+        <th> Valid for: </th>
+    </tr>
+    <tr>
+    	<td> T + P </td>
+        <td> Isothermal search with specified pressure </td>
+        <td> T<sub>min</sub> &lt T &lt T<sub>max</sub> <br>
+        	P<sub>min</sub> &lt P &lt T<sub>max</sub></td>
+    </tr>
+    <tr>
+    	<td> T + {h|s} </td>
+        <td> Iterated isothermal search to find h or s <br>
+        as specified. Will interpolate under<br>saturation curve. </td>
+        <td> T<sub>min</sub> &lt T &lt T<sub>max</sub> <br>
+        	{h|s}<sub>Tmin</sub> &lt {h|s} &lt {h|s}<sub>Tmax</sub></td>
+    </tr>
+    <tr>
+        <td> P + {h|s} </td>
+        <td> Iterated isobaric search to find h or s <br>
+        as specified. Will interpolate under<br>saturation curve. </td>
+        <td> P<sub>min</sub> &lt P &lt P<sub>max</sub> <br>
+        	{h|s}<sub>Pmin</sub> &lt {h|s} &lt {h|s}<sub>Pmax</sub></td>
+    </tr>
+    <tr>
+    	<td> x + {P|T} </td>
+        <td> Search for mixture under saturation<br>curve by interpolation. </td>
+        <td> {T|P}<sub>min</sub> &lt {P|T} &lt {T|P}<sub>SatMax</sub><br>
+        	0 &lt x &lt 1</td>
+    </tr>
+    <tr class="thstyle">
+    	<th> Invalid </th>
+        <th colspan="2"> Description </th>
+    </tr>
+    <tr>
+    	<td> h + s </td>
+        <td colspan="2"> Though in theory this search is performable through double itertion,<br>
+        the computational requirements went beyond the necessary <br>
+        scope of the project. </td>
+    </tr>
+    <tr>
+    	<td> x + {h|s} </td>
+        <td colspan="2"> Likewise, this search can be performed with some extra computations<br>
+        but they went beyond what was required for this project</td>
+    </tr>
+    </table>
+    <br><br>
+    <div class="subheading"> Cycle Calculator: <span>(not implemented)</span></div>
+    
+    <div class="paragraph">
+    This function allows for four states to be combined into a simple four-stage <br>
+    Rankine power cycle, and returns the efficiency and power output of the cycle. <br>
+    The inputs are the same as for the State Calculator (two state variables per state) <br>
+    but if they are not entered in the specified order, the calculator will return<br>
+    an error.
+    </div>
+    
+    
+    
+ <table class="button-table">
+ <tr>
+ 	<th colspan="2" style="border : none;"> Get started!
+ </tr>
+ <tr>
+ 	<td style="border : none;">
+    <form method='post' action='/state-calculator/'>
+        <button type='submit'>State Calculator</button>
+    </form>
+    </td>
+    <td style="border : none;">
+    <form method='post' action='/cycle-calculator/'>
+        <button type='submit'>Cycle Calculator</button>
+    </form>
+    </td>
+ </tr>
+ <tr>
+ 	<td colspan="2" style="text-align : center; border : none;"> Or return <a href='/'>home</a>.</td>
+ </tr>
+ </table>
+    
+    
+</body>
+</html>
